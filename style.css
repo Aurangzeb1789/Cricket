@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+  }
+
+  button {
+    padding: 10px;
+    
+  }
+
+  .choice-images{
+                  height: 80px;
+                  padding: 10px;
+                 
+  }
+  .choice-button{
+    border-radius: 15px;
+    margin: 15px;
+    border: none;
+    cursor: pointer;
+    height: 130px;
+    width: 130px;
+    background-color: lightblue
+  }
+  .reset{
+             width: 60px;
+  }
+  .res{
+          border: none;
+          background:none;
+          cursor: pointer;
+          
+  }

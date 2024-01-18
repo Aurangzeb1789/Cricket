@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Game</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+
+      <body>
+                <h1>Bat Ball Stump</h1>
+
+        <button
+          class="choice-button"
+          onclick=" 
+                       computersChoice();
+                        
+                        if(computerChoice ==='Bat')
+                        {
+                               result = 'Its a Tie';
+                               increase();
+                               store();
+
+                        }
+                        else if (computerChoice === 'Ball')
+                        {
+                            result = 'You Won';
+                            increase();
+                            store();
+                        }
+    
+                        else 
+                        {
+                              result = 'Computer Won';
+                              increase();
+                              store();
+                        }
+
+              call12('Bat');">
+
+          <img src="img/bat.png" alt="Bat" class="choice-images" />
+
+        </button>
+
+        <button
+          class="choice-button"
+          onclick=" 
+                  computersChoice();
+                  
+                  if(computerChoice ==='Bat')
+                  
+             {
+                   result = 'Computer Won';
+                   increase();
+                    store();
+          
+             }
+
+             else if (computerChoice === 'Ball')
+             {
+            
+                 result = 'Its a Tie';
+                 increase();
+                 store();
+                 
+             }
+    
+             else 
+             {
+          
+                   result = 'You Won';
+                   increase();
+                   store();
+             }
+        
+            call12('Ball');">
+
+          <img src="img/ball (1).png" alt="Ball" class="choice-images" />
+
+        </button>
+
+        <button
+          class="choice-button"
+          onclick="
+                     computersChoice();
+    
+             if(computerChoice ==='Bat')
+             {
+                    result = 'You Won';
+                    increase();
+                    store();
+             }
+             else if (computerChoice === 'Ball')
+             {
+                 result = 'Computer Won';
+                 increase();
+                 store();
+             }
+    
+             else 
+             {
+                   result = 'Its a Tie';
+                   increase();
+                   store();
+             }
+
+             call12('Stump');">
+
+          <img src="img/stump (1).png" alt="stump" class="choice-images" />
+
+        </button>
+
+        <h3 id="userMove"></h3>
+        <h3 id="computerMove"></h3>
+        <h3 id="result"></h3>
+        <h3 id="score">Score : Won 0 , Lost 0 , Tie 0</h3>
+
+        <button class="res" onclick="localStorage.clear()
+            
+            document.querySelector('#userMove').innerHTML='';
+            document.querySelector('#computerMove').innerHTML='';
+            document.querySelector('#result').innerHTML='';
+            document.querySelector('#score').innerText=(`Score : Won 0 , Lost 0 , Tie 0 `);">
+
+          <img src="img/Reset.png" alt="" class="reset" />
+      </button>
+          
+
+        <script>
+          let score;
+
+          function increase() {
+            let ScoreStr = localStorage.getItem("score");
+
+            if (ScoreStr !== null) {
+              score = JSON.parse(ScoreStr);
+
+              if (result === "Its a Tie") {
+                score.tie++;
+              } else if (result === "Computer Won") {
+                score.lost++;
+              } else {
+                score.win++;
+              }
+            } else {
+              score = {
+                win: 0,
+                lost: 0,
+                tie: 0,
+              };
+
+              if (result === "Its a Tie") {
+                score.tie++;
+              } else if (result === "Computer Won") {
+                score.lost++;
+              } else {
+                score.win++;
+              }
+            }
+          }
+
+          let computerChoice;
+          let result;
+
+          function computersChoice() {
+            let randome = Math.random() * 3;
+
+            if (randome >= 0 && randome < 1) {
+              computerChoice = "Bat";
+            } else if (randome >= 1 && randome < 2) {
+              computerChoice = "Ball";
+            } else {
+              computerChoice = "Stump";
+            }
+          }
+
+          function store() {
+            localStorage.setItem("score", JSON.stringify(score));
+          }
+
+          function call12(user) {
+            let use = user;
+            console.log(use);
+            document.querySelector(
+              "#userMove"
+            ).innerText = `You Have Chosen ${use}`;
+            document.querySelector(
+              "#computerMove"
+            ).innerText = `Computer Choice is ${computerChoice}`;
+            document.querySelector("#result").innerText = ` ${result}`;
+            document.querySelector(
+              "#score"
+            ).innerText = `Score : Won ${score.win} , Lost ${score.lost} , Tie ${score.tie} `;
+          }
+        </script>
+  </body>
+</html>
