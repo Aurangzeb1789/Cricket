@@ -9,5 +9,5 @@ HTML <br>
 CSS <br>
 JavaScript <br>
 <h2>Live Project</h2>
-You can access the live Cricket Game web app [here]().
+You can access the live Cricket Game web app (https://aurangzeb1789.github.io/Cricket/).
 
